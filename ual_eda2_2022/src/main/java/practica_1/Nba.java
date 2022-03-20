@@ -3,23 +3,18 @@ package practica_1;
 import java.io.*;
 import java.util.*;
 
-public class NBA {
-	static double tiempoInicio;
-	static double tiempoFinal;
-	public static void main(String[] arg){
-		//Tiempo de ejecución de todo el programa
-	
+public class Nba {
+
+	public void lecturaJugadores(ArrayList<Jugador> nba, String dir) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
 		String nombre;
 
-		ArrayList<Jugador> nba = new ArrayList<Jugador>();
 		try {
 		// Apertura del fichero y creacion de BufferedReader para poder
 		// leer una linea completa utilizando el método readLine().
-		archivo = new File(
-				"C:\\Users\\motal\\OneDrive\\Escritorio\\Universidad\\Segundo\\EDA II\\Prácticas\\Practica_01\\NbaStats.csv");
+		archivo = new File(dir);
 		fr = new FileReader(archivo);
 		br = new BufferedReader(fr);
 
@@ -134,21 +129,8 @@ public class NBA {
 				e2.printStackTrace();
 			}
 		}
-		
-		tiempoInicio = System.nanoTime();
-		//Ordenamos el array utilizando como nuestro algoritmo divide y venceras el algoritmo de ordenacion quicksort.
-		//Medimos los tiempos de ejecucion del algoritmo.
-		quicksort(nba, 0, nba.size() - 1);
-		tiempoFinal = System.nanoTime();
-		//Imprimimos los 10 mejores ordenados por media
-		for(int i = 0; i< 10; i++) {
-			System.out.print(nba.get(nba.size()-1-i));
-		}
-		
-		System.out.println("Tiempo ejecución divide y vencerás: "+(tiempoFinal-tiempoInicio)/1000000000+" segundos");
 	}
-
-	public static void quicksort(ArrayList<Jugador> NBA, int izq, int der) {
+	public void quicksort(ArrayList<Jugador> NBA, int izq, int der) {
 
 		Jugador pivote = NBA.get(izq); // tomamos primer elemento como pivote
 		int i = izq; // i realiza la búsqueda de izquierda a derecha
