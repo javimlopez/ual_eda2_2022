@@ -51,7 +51,7 @@ public class Nba {
 					aux.setEquipos(equipos);
 					break;
 				case 7:
-					if (separado[i] == "")
+					if (separado[i].equals(""))
 						aux.setAciertos(0.0);
 					else
 						aux.setAciertos(Double.valueOf(separado[i]));
@@ -164,3 +164,4 @@ public class Nba {
 	}
 
 }
+
