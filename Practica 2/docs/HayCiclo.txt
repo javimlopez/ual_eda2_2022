@@ -1,0 +1,21 @@
+public boolean HayCiclo(Grafo g,Arco aVerificar,Nodo terminal,String N)
+ {
+ 	ArrayList<Enlace> aux=terminal.getEnlaces();
+ 
+ 	if(aux.size()==0)
+ 		return false;
+ 
+ 	if(terminal.existeEnlace(aVerificar.getInicial())!=-1)
+ 		return true;
+ 
+ 	for(int i=0;i<aux.size();i++)
+ 	{
+ 		Enlace nodo=aux.get(i);
+ 
+ 		if(nodo.getDestino().equals(N)==false)
+ 			if( HayCiclo(g,aVerificar,g.getNodo(nodo.getDestino()),terminal.getNombre()))
+ 								return true;
+ 	}
+ 
+ 	return false;
+ }

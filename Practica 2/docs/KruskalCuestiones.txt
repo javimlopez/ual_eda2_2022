@@ -1,0 +1,19 @@
+Algoritmo adicional de comprobación de ciclos y pasos de implementación algoritmo kruskal
+-pequeña descripción teórica del algoritmo ( a contrastar) :
+El algoritmo de kruskal, es un algoritmo voraz utilizado en la teoría de grafos, con el fin de encontrar un árbol recubridor mínimo de un grafo conexo y ponderado.
+
+Paso 0: Iniciar el árbol T con n nodos y sin arcos T=({1, 2, …n},ø)Paso 1: Con los arcos de G crear una lista L de arcos, en orden ascendente de peso. Los arcos con el mismo peso son ordenados arbitrariamente.Paso 2. Seleccionar el arco (i,j) que esté al comienzo de L. Si éste forma un circuito en T no se transfiere a T y se borra de L y se repite el paso 2. Si no forma circuito en T se transfiere a T y se borra de L.Paso 3. Si L es no vacío, volver al paso 2, de lo contrario PARAR.
+--Cuestiones Teóricas a resolver en la memoria
+---1.- ¿El resultado de la ejecución de los dos algoritmos debe ser el mismo? (intuyo que entre Kruskal y Prim)---2.- ¿El resultado de la ejecución de los dos algoritmos debe ser el mismo?¿Por qué?---3.- Si el èso de las aristas fuese la distancia entre dos ciudades, con la estructura resultante,¿podemos determinar el camino mínimo entre dos pares de ciudades cualesquiera?
+
+Tiempo de ejecución:
+Ordenar las aristas: O(m log m), equivale a O(m log n), ya
+que n - 1 = m = n*(n - 1)/2 (n es el número de vértices y m
+el de aristas)
+Inicializar los n conjuntos disjuntos: O(n)
+Bucle principal repetir se ejecuta n - 1 veces
+Operaciones obtener y fusionar: en el caso peor
+2m en las operaciones de obtener los conjuntos y (n - 1) para
+fusionarlos, en conjuntos disjuntos estas operaciones se ejecutan
+en O(log n)
+TKruskal(n, m) ? O(m log n)
