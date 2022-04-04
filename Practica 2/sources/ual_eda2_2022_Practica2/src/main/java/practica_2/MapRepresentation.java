@@ -3,7 +3,7 @@ import java.io.*;
 
 public class MapRepresentation {
  
-	public static void lecturaArchivo(Graph grafo, String dir) {
+	public static void lecturaArchivo(Grafo grafo, String dir) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -72,18 +72,18 @@ public class MapRepresentation {
         Node puebla = new Node("Puebla");
         Node tlaxcala = new Node("Tlaxcala");
  
-        df.addEdge(new Edge(df, toluca, 100));
-        df.addEdge(new Edge(df, cuernavaca, 90));
+        df.addEdge(new Arista(df, toluca, 100));
+        df.addEdge(new Arista(df, cuernavaca, 90));
  
-        toluca.addEdge(new Edge(toluca, cuernavaca, 150));
-        toluca.addEdge(new Edge(toluca, puebla, 350));
-        toluca.addEdge(new Edge(toluca, tlaxcala, 340));
+        toluca.addEdge(new Arista(toluca, cuernavaca, 150));
+        toluca.addEdge(new Arista(toluca, puebla, 350));
+        toluca.addEdge(new Arista(toluca, tlaxcala, 340));
  
-        cuernavaca.addEdge(new Edge(cuernavaca, puebla, 100));
+        cuernavaca.addEdge(new Arista(cuernavaca, puebla, 100));
  
         puebla.addEdge(new Edge(puebla, tlaxcala, 20));
  
-        Graph graph = new Graph();
+        Grafo graph = new Graph();
         graph.addNode(df);
         graph.addNode(toluca);
         graph.addNode(cuernavaca);
