@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Grafo {
 
 	private ArrayList<Nodo> nodos;
+	private ArrayList<Arista> aristas;
 	private int nNodos;
 	private int nAristas;
 	
