@@ -5,34 +5,34 @@ import java.util.List;
  
 public class Node {
 	
-    private String city;
-    private List<Edge> edges;
+    private String ciudad;
+    private List<Arista> aristas;
  
     public Node(String city) {
-        this.city = city;
+        this.ciudad = city;
     }
  
     public String getCity() {
-        return city;
+        return ciudad;
     }
  
     public void setCity(String city) {
-        this.city = city;
+        this.ciudad = city;
     }
  
-    public List<Edge> getEdges() {
-        return edges;
+    public List<Arista> getEdges() {
+        return aristas;
     }
  
-    public void addEdge(Edge edge) {
-        if (edges == null) {
-            edges = new ArrayList<Edge>();
+    public void addEdge(Arista edge) {
+        if (aristas == null) {
+            aristas = new ArrayList<Arista>();
         }
-        edges.add(edge);
+        aristas.add(edge);
     }
  
     @Override
     public String toString() {
-        return "\n \tNode [city=" + city + ", edges=" + edges + "]";
+        return "\n \tNodo [Ciudad: " + ciudad + ", aristas=" + aristas + "]";
     }
 }

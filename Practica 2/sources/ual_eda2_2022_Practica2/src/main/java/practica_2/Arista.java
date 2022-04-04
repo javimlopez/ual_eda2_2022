@@ -1,4 +1,4 @@
-package practica2;
+package practica_2;
 
 public class Arista {
     private String origen;

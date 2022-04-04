@@ -1,4 +1,4 @@
-package practica2;
+package practica_2;
 import java.util.ArrayList;
 
 public class Grafo {
