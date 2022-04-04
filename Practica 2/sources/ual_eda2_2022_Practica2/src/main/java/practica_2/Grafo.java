@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Grafo {
 
-	private ArrayList<String> nodos;
+	private ArrayList<Nodo> nodos;
 	private ArrayList<Arista> aristas;
 	private int nNodos;
 	private int nAristas;
@@ -12,23 +12,15 @@ public class Grafo {
 		//Constructor para grafo aleatorio
 	}
 
-	public void addNodo(String nodo) {
+	public void addNodo(Nodo nodo) {
 		nodos.add(nodo);
 	}
 	
-	public ArrayList<String> getNodos() {
+	public ArrayList<Nodo> getNodos() {
 		return nodos;
 	}
 
-	public ArrayList<Arista> getAristas() {
-		return aristas;
-	}
-
-	public void setAristas(ArrayList<Arista> aristas) {
-		this.aristas = aristas;
-	}
-
-	public void setNodos(ArrayList<String> nodos) {
+	public void setNodos(ArrayList<Nodo> nodos) {
 		this.nodos = nodos;
 	}
 
