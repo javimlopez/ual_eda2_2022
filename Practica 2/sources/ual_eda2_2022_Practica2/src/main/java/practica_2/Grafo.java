@@ -5,19 +5,31 @@ public class Grafo {
 
 	private ArrayList<Nodo> nodos;
 	private ArrayList<Arista> aristas;
-	private int nNodos;
-	private int nAristas;
+
+	public Grafo() {
 	
-	public Grafo(int nNodos, int nAristas) {
-		//Constructor para grafo aleatorio
+		this.nodos = new ArrayList<Nodo>();
+		this.aristas = new ArrayList<Arista>();
+	}
+
+	public ArrayList<Arista> getAristas() {
+		return aristas;
+	}
+
+	public void setAristas(ArrayList<Arista> aristas) {
+		this.aristas = aristas;
 	}
 
 	public void addNodo(Nodo nodo) {
 		nodos.add(nodo);
 	}
-	
+
 	public ArrayList<Nodo> getNodos() {
 		return nodos;
+	}
+	
+	public Nodo getNodo(int indice) {
+		return this.getNodos().get(indice);
 	}
 
 	public void setNodos(ArrayList<Nodo> nodos) {
@@ -25,18 +37,30 @@ public class Grafo {
 	}
 
 	public int getnNodos() {
-		return nNodos;
+		return nodos.size();
 	}
 
-	public void setnNodos(int nNodos) {
-		this.nNodos = nNodos;
+	public void addArista(Arista arista) {
+		aristas.add(arista);
 	}
 
 	public int getnAristas() {
-		return nAristas;
+		return aristas.size();
 	}
-
-	public void setnAristas(int nAristas) {
-		this.nAristas = nAristas;
+	
+	public boolean contieneAristaND(Arista arista) {
+		
+		boolean contiene = false;
+		for (Arista ar : this.getAristas()) {
+			if ((ar.getDestino() == arista.getDestino() && ar.getOrigen() == arista.getOrigen()) ||
+				(ar.getDestino() == arista.getOrigen() && ar.getOrigen() == arista.getDestino())) {
+				contiene = true;
+			}
+		}
+		return contiene;
 	}
+	
+	  public String toString() {
+	        return "\n Nodos= " + nodos + "\n Aristas= " + aristas.toString() + "\n";
+	    }
 }
