@@ -86,52 +86,12 @@ public class MapRepresentation {
 			}
 		}
 	}
-	public static ArrayList<Nodo> grafoPrim(Grafo grafo, Nodo v){
-		if(!grafo.getNodos().contains(v)) {
-			return new ArrayList<Nodo>();
-		}
-		ArrayList<Nodo> nodos = new ArrayList<Nodo>();
-		ArrayList<Arista> aristas = new ArrayList<Arista>();
-		ArrayList<Nodo> solucion = new ArrayList<Nodo>();
-		
-		nodos.addAll(grafo.getNodos());
-		nodos.remove(v);
-		solucion.add(v);
-		Nodo aux = new Nodo("");
-		int peso = 0;
-		while(!nodos.isEmpty()) {
-			peso = Integer.MAX_VALUE;
-			aux.setNombre("");
-		
-			for(Arista arista : grafo.getAristas()) {
-				if(!aristas.contains(arista) && (arista.getOrigen().equals(v) || arista.getDestino().equals(v))) {
-					aristas.add(arista);
-				}
-			}
-			for(Arista arista: aristas) {
-				if(peso>arista.getDistancia() && nodos.contains(arista.getOrigen())) {
-					peso = arista.getDistancia();
-					aux = arista.getOrigen();
-				}else if (peso > arista.getDistancia() && nodos.contains(arista.getDestino())) {
-					peso = arista.getDistancia();
-					aux = arista.getDestino();
-				}
-			}
-			if (aux == null) {
-				return new ArrayList<Nodo>();
-			}
-			nodos.remove(aux);
-			solucion.add(aux);
-			v = aux;
-		}
-		return solucion;
-	}
     public static void main(String[] args) {
     	Grafo grafo = new Grafo();
     	lecturaArchivo(grafo, "C:\\Users\\motal\\OneDrive\\Escritorio\\graphEDALand.txt");
     	System.out.println(grafo);
-    	ArrayList<Nodo> solucion = grafoPrim(grafo, grafo.getNodo(0));
-    	System.out.println(solucion);
+    	Prim algoritmoPrim = new Prim(grafo);
+    	System.out.println(algoritmoPrim);
     	
     }
     
