@@ -1,4 +1,4 @@
-package practica_2;
+package practica2;
 
 public class Arista {
     private Nodo origen;
@@ -34,11 +34,54 @@ public class Arista {
     public void setDistancia(double distancia) {
         this.distancia = distancia;
     }
+    
+    public Arista inversa() {
+    	Nodo destinoInv = this.origen;
+    	Nodo origenInv = this.destino;
+    	
+    	Arista inversa = this;
+    	
+    	inversa.setDestino(destinoInv);
+    	inversa.setOrigen(origenInv);
+    	
+    	return inversa;
+    }
  
     @Override
     public String toString() {
-        return "\n Origen= " + this.origen.getNombre() + "\n Destino= " + 
-        		this.destino.getNombre() + "\n Distancia= " + this.distancia;
+        return "\n Arista: " + "Ciudades (" + this.origen.getNombre() + ", " + 
+        		this.destino.getNombre() + ") / Distancia = " + this.distancia;
     }
+    
+    //para kruskal
+    
+    private String inicial;
+ 	private String terminal;
+ 	
+ 	public Arista(String ini, String ter, double pes)
+ 	{
+ 		inicial = ini;
+ 		terminal = ter;
+ 		distancia = pes;
+ 	}
+    public String getInicial()
+ 	{
+ 		return inicial;
+ 	}
  
+ 	public void setInicial(String inicial)
+ 	{
+ 		this.inicial = inicial;
+ 	}
+ 
+ 	public String getTerminal()
+ 	{
+ 		return terminal;
+ 	}
+ 
+ 	public void setTerminal(String terminal)
+ 	{
+ 		this.terminal = terminal;
+ 	}
 }
+
