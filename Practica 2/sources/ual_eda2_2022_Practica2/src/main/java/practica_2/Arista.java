@@ -64,7 +64,11 @@ public class Arista {
  		terminal = ter;
  		distancia = pes;
  	}
-    public String getInicial()
+    public Arista() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getInicial()
  	{
  		return inicial;
  	}
