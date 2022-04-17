@@ -19,19 +19,21 @@ public class Grafo {
     
         for(int i=0; i< this.getnNodos(); i++){
         	for(int j=0; j< this.getnNodos(); j++){
-        		
+        		//Inicializamos los valores de la matriz a 0
         		matrizAdy[i][j] = 0;
         	}            
         }
         
         for(int i=0; i< this.getnNodos(); i++){
         	for(int j=0; j< this.getnNodos(); j++){
-        		Arista arista = new Arista(this.nodos.get(i),this.nodos.get(j),0);
         		
-        		if(this.contieneAristaND(arista) == true){
+        		Arista aux = new Arista(this.nodos.get(i),this.nodos.get(j),0);
+        		
+        		//Vamos dando valores a la matriz de adyacencia en funcion
+        		//de los nodos conectados mediante aristas
+        		if(this.contieneAristaND(aux)){
         			matrizAdy[i][j] ++;
         		}
-        
         	}            
         }
      
@@ -53,7 +55,7 @@ public boolean contieneAristaND(Arista arista) {
 	    	String salida = "";
 	        for(int i=0; i<nodos.size(); i++){
 	            for(int j=0; j< nodos.size(); j++){
-	                salida += (matrizAdy[i][j] + "  " );        
+	                salida += (matrizAdy[i][j] + " " );        
 	            }
 	            salida += "\n";
 	        }  

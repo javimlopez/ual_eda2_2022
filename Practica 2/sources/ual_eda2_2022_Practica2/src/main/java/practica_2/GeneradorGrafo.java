@@ -59,20 +59,24 @@ public class GeneradorGrafo {
 				}
 			 }	 
 		}
+		
+		//Creamos la matriz de adyacencia del grafo
 		grafo.crearMatrizAdy();
+		
 		return grafo;
 	}
 	
 	public static void main(String[] args) {
 		
-		Grafo prueba = crearGrafo(5000);
+		Grafo prueba = crearGrafo(50);
+		System.out.println(prueba.printMatrizAdy());
 		FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("C:\\Users\\titoj\\Desktop\\prueba.txt");
+            fichero = new FileWriter("C:\\Users\\titoj\\Desktop\\aws.txt");
             pw = new PrintWriter(fichero);
-            pw.println(prueba.toString());
+
             pw.println(prueba.printMatrizAdy());
 
         } catch (Exception e) {
