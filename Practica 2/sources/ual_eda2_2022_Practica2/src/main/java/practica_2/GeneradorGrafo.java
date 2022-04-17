@@ -59,20 +59,21 @@ public class GeneradorGrafo {
 				}
 			 }	 
 		}
-		
+		grafo.crearMatrizAdy();
 		return grafo;
 	}
 	
 	public static void main(String[] args) {
 		
-		Grafo prueba = crearGrafo(10000);
+		Grafo prueba = crearGrafo(5000);
 		FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
             fichero = new FileWriter("C:\\Users\\titoj\\Desktop\\prueba.txt");
             pw = new PrintWriter(fichero);
-                pw.println(prueba.toString());
+            pw.println(prueba.toString());
+            pw.println(prueba.printMatrizAdy());
 
         } catch (Exception e) {
             e.printStackTrace();

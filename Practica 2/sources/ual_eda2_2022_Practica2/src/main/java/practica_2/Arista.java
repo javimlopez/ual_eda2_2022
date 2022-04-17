@@ -34,18 +34,6 @@ public class Arista {
     public void setDistancia(double distancia) {
         this.distancia = distancia;
     }
-    
-    public Arista inversa() {
-    	Nodo destinoInv = this.origen;
-    	Nodo origenInv = this.destino;
-    	
-    	Arista inversa = this;
-    	
-    	inversa.setDestino(destinoInv);
-    	inversa.setOrigen(origenInv);
-    	
-    	return inversa;
-    }
  
     @Override
     public String toString() {

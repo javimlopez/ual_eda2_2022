@@ -5,13 +5,61 @@ public class Grafo {
 
 	private ArrayList<Nodo> nodos;
 	private ArrayList<Arista> aristas;
+	private int[][] matrizAdy;
 
 	public Grafo() {
 	
 		this.nodos = new ArrayList<Nodo>();
 		this.aristas = new ArrayList<Arista>();
 	}
-
+	
+	public int[][] crearMatrizAdy() {
+		
+        matrizAdy = new int[nodos.size()][nodos.size()];
+    
+        for(int i=0; i< this.getnNodos(); i++){
+        	for(int j=0; j< this.getnNodos(); j++){
+        		
+        		matrizAdy[i][j] = 0;
+        	}            
+        }
+        
+        for(int i=0; i< this.getnNodos(); i++){
+        	for(int j=0; j< this.getnNodos(); j++){
+        		Arista arista = new Arista(this.nodos.get(i),this.nodos.get(j),0);
+        		
+        		if(this.contieneAristaND(arista) == true){
+        			matrizAdy[i][j] ++;
+        		}
+        
+        	}            
+        }
+     
+        return matrizAdy;
+    }
+	
+public boolean contieneAristaND(Arista arista) {
+		
+		boolean contiene = false;
+		for (Arista ar : this.getAristas()) {
+			if ((ar.getDestino() == arista.getDestino() && ar.getOrigen() == arista.getOrigen()) ||
+				(ar.getDestino() == arista.getOrigen() && ar.getOrigen() == arista.getDestino())) {
+				contiene = true;
+			}
+		}
+		return contiene;
+	}
+	    public String printMatrizAdy(){
+	    	String salida = "";
+	        for(int i=0; i<nodos.size(); i++){
+	            for(int j=0; j< nodos.size(); j++){
+	                salida += (matrizAdy[i][j] + "  " );        
+	            }
+	            salida += "\n";
+	        }  
+	        return salida;
+	    }
+	    
 	public ArrayList<Arista> getAristas() {
 		return aristas;
 	}
@@ -46,18 +94,6 @@ public class Grafo {
 
 	public int getnAristas() {
 		return aristas.size();
-	}
-	
-	public boolean contieneAristaND(Arista arista) {
-		
-		boolean contiene = false;
-		for (Arista ar : this.getAristas()) {
-			if ((ar.getDestino() == arista.getDestino() && ar.getOrigen() == arista.getOrigen()) ||
-				(ar.getDestino() == arista.getOrigen() && ar.getOrigen() == arista.getDestino())) {
-				contiene = true;
-			}
-		}
-		return contiene;
 	}
 	
 	  public String toString() {
