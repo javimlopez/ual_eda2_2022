@@ -13,8 +13,12 @@ public class Kruskal {
 			arbol.ingresarNodo(nodos.get(j));
 		}
 
+		//creamos una lista de aristas y la ordenamos en funcion de la distancia de manera ascendente
 		ArrayList<Arista> L = (ArrayList<Arista>) grafo.getAristas().clone();
 
+		//seleccionamos la primera arista de L y comprobamos que no haya ciclo en el arbols si lo hay esta se elimina de la lista y no entra en el arbol
+		//y si no hay ciclo si se queda en el arbol de recubrimiento
+		
 		Arista pro = L.get(0);
 		arbol.adicionarEnlace(pro.getInicial(), pro.getTerminal(), pro.getDistancia());
 		L.remove(pro);
@@ -30,7 +34,8 @@ public class Kruskal {
 
 		return arbol;
 	}
-
+	
+	//metodo para la comprobacion de que no se forman ciclos en el arbol al añadir alguna arista
 	public  boolean HayCiclo(Grafo g, Arista aVerificar, Nodo terminal, String N) {
 		ArrayList<Enlace> aux = terminal.getEnlaces();
 
