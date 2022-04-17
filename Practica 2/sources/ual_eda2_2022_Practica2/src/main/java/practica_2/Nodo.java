@@ -35,6 +35,6 @@ public class Nodo {
  
     @Override
     public String toString() {
-        return "Ciudad= " + nombre + aristas.toString() + "\n";
+        return nombre + aristas.toString() + "\n";
     }
 }

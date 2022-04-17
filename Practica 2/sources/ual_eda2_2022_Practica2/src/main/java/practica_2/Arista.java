@@ -3,12 +3,15 @@ package practica_2;
 public class Arista {
     private Nodo origen;
     private Nodo destino;
-    private double distancia;
+    private int distancia;
  
-    public Arista(Nodo origen, Nodo destino, double distancia) {
+    public Arista(Nodo origen, Nodo destino, int distancia) {
         this.origen = origen;
         this.destino = destino;
         this.distancia = distancia;
+    }
+    public Arista() {
+    	
     }
  
     public Nodo getOrigen() {
@@ -27,11 +30,11 @@ public class Arista {
         this.destino = destino;
     }
  
-    public double getDistancia() {
+    public int getDistancia() {
         return distancia;
     }
  
-    public void setDistancia(double distancia) {
+    public void setDistancia(int distancia) {
         this.distancia = distancia;
     }
     

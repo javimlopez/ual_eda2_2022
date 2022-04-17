@@ -61,6 +61,6 @@ public class Grafo {
 	}
 	
 	  public String toString() {
-	        return "\n Nodos= " + nodos + "\n Aristas= " + aristas.toString() + "\n";
+	        return  nodos + "\n";
 	    }
 }
