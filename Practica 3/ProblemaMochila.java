@@ -14,7 +14,6 @@ public class ProblemaMochila {
 	private ArrayList<Objeto> solucionOptima = new ArrayList<Objeto>();
 	
 	public ProblemaMochila() {
-		
 	}
 	
 	public void resolverProblema(Mochila mochila, Objeto[] objetos) {
@@ -24,7 +23,7 @@ public class ProblemaMochila {
 		
 		//Comenzamos dando formato a la salida final mostrando
 		//la lista de objetos para llenar la mochila
-		System.out.println("Lista de objetos");
+		System.out.println("Lista de objetos para introducir (El valor de la derecha indica si han sido seleccionados):");
 		for(int i = 0; i < objetos.length; i++) {
 			
 			//Les damos nombres a los objetos para diferenciarlos
@@ -75,14 +74,17 @@ public class ProblemaMochila {
             solucionOptima = new ArrayList<Objeto>();  
         }  
         
+        //Inicializamos el peso restante como la capacidad de la mochila
         int pesoAct = mochila.getCapacidad();  
         
+        //Recorremos valores en la matriz desde la ultima fila
         for (int i=mochila.getNumObjetos(); i >= 1; i--) {  
+        	
         	//Si el valor de una posicion en la matriz es mayor que el 
         	//que tiene encima anadimos a la solucion el objeto que
         	//se anadio en esa fila de la matriz
            if (matrizOptima[i][pesoAct] > matrizOptima[i-1][pesoAct]) {
-        	   solucionOptima.add(objetos[i-1]);
+        	   mochila.addSeleccionado(objetos[i-1]);
         	   
         	   //Le quitamos el peso del objeto que acabamos de anadir
                pesoAct -= objetos[i-1].getPeso();  
@@ -93,6 +95,7 @@ public class ProblemaMochila {
         	   break;  
         }  
         valorOptimo = matrizOptima[mochila.getNumObjetos()][mochila.getCapacidad()];  
+        solucionOptima = mochila.getSeleccionados();
     } 
 	
 	public int getValorOptimo() {

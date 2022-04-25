@@ -35,13 +35,19 @@ public class TestMochila {
             }  
             System.out.println();  
         }
-	        System.out.println ("\nSolución óptima (objetos seleccionados):");  
-	        
-	        for (Objeto objeto : problema.getSolucionOptima()) {
+	        System.out.println ("\nLista de objetos tras ejecutar el alogritmo:");
+	        for (Objeto objeto : mochila.getObjetos()) {
 	        	System.out.println(objeto.toString());  
 	        }
 	        
-	        System.out.println ("Valor óptimo:" + problema.getValorOptimo());  
+	        System.out.println("\nLista de objetos seleccionados: ");
+	        for (Objeto objeto : mochila.getSeleccionados()) {
+	        	System.out.println(objeto.toString());  
+	        }
+	        
+	        System.out.println("");
+	        
+	        System.out.println ("Valor óptimo:" + problema.getValorOptimo());
   
     }  
 }

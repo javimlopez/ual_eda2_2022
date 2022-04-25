@@ -6,12 +6,14 @@ public class Objeto {
 	private String nombre;
 	private int peso;
 	private int valor;
+	private int seleccionado;
 	
 	//Constructor por el que se le pasa el peso y el valor
 	public Objeto(int peso, int valor) {
 		this.nombre = "";
 		this.peso = peso;
 		this.valor = valor;
+		this.seleccionado = 0;
 	}
 	
 	//Getters
@@ -27,13 +29,21 @@ public class Objeto {
 		return valor;
 	}
 	
-	//SetNombre
+	public int getSeleccionado() {
+		return seleccionado;
+	}
+	
+	//Setters
 	public void setNombre(Integer i) {
 		this.nombre = "objeto" + i.toString();
 	}
 	
+	public void setSeleccionado(Integer i) {
+		this.seleccionado = i;
+	}
+	
 	//toString
 	public String toString() {  
-		   return nombre + ": [Peso: " + peso + ", value: " + valor + "]";    
+		   return nombre + ": [Peso: " + peso + ", valor: " + valor + "]\t" + seleccionado;    
 		}
 }

@@ -1,25 +1,28 @@
 package practica3;
+import java.util.Scanner;
+
+import java.util.ArrayList;
 
 public class Mochila {
 	
-	//Objetos que tiene dentro
+	//Objetos que podemos meter en la mochila
 	private Objeto[] objetos;
+	
+	//Objetos introducidos en la mochila
+	private ArrayList<Objeto> seleccionados;
 	
 	//Numero de objetos de la mochila
 	private int numObjetos;
 	
 	//Peso maximo de la mochila
 	private int capacidad;
-	
-	//Peso actual
-	private int pesoActual;
 
 	//Constructor
 	public Mochila(Objeto[] objetos, int capacidad, int pesoactual) {
 		this.objetos = objetos;
 		this.numObjetos = objetos.length;
 		this.capacidad = capacidad;
-		this.pesoActual = 0;
+		this.seleccionados = new ArrayList<Objeto>();
 	}
 	
 	//Getters y setters
@@ -39,14 +42,11 @@ public class Mochila {
 		this.capacidad = capacidad;
 	}
 
-	public int getPesoActual() {
-		return pesoActual;
+	
+	public ArrayList<Objeto> getSeleccionados() {
+		return seleccionados;
 	}
-
-	public void setPesoActual(int pesoActual) {
-		this.pesoActual = pesoActual;
-	}
-
+	
 	public int getNumObjetos() {
 		return numObjetos;
 	}
@@ -54,5 +54,9 @@ public class Mochila {
 	public void setNumObjetos(int numObjetos) {
 		this.numObjetos = numObjetos;
 	}
-
+	
+	public void addSeleccionado(Objeto objeto) {
+		objeto.setSeleccionado(1);
+		this.seleccionados.add(objeto);
+	}
 }
