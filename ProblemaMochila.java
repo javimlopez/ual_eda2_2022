@@ -1,15 +1,15 @@
 package practica3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ProblemaMochila {
-	
 	
 	//Matriz de decision optima
 	private int[][] matrizOptima;
 	
 	//Valor optimo para cada caso de la matriz
-	private int valorOptimo;
+	private double valorOptimo;
 	
 	//Lista de objetos para la solucion optima
 	private ArrayList<Objeto> solucionOptima = new ArrayList<Objeto>();
@@ -19,16 +19,18 @@ public class ProblemaMochila {
 	
 	public void resolverProblema(Mochila mochila, Objeto[] objetos) {
 		//Inicializamos la matriz optima
-		if(matrizOptima == null) 
-			matrizOptima = new int [mochila.getNumObjetos()+1][mochila.getCapacidad()+1];
 		
+		if(matrizOptima == null) 
+			matrizOptima = new int [objetos.length+1][mochila.getCapacidad()*100+1];
+	
 		//Comenzamos dando formato a la salida final mostrando
 		//la lista de objetos para llenar la mochila
-		System.out.println("Lista de objetos para introducir (El valor de la derecha indica si han sido seleccionados):");
+		System.out.println("Lista de objetos para introducir:");
 		for(int i = 0; i < objetos.length; i++) {
 			
 			//Les damos nombres a los objetos para diferenciarlos
 			objetos[i].setNombre(i);
+			
 			
 			System.out.println(objetos[i].toString());
 		}
@@ -37,23 +39,22 @@ public class ProblemaMochila {
 		System.out.println("Capacidad de la mochila (peso maximo): " + mochila.getCapacidad());
 		
 		// encuentra el valor optimo  
-        for (int i = 0; i <= mochila.getCapacidad(); i++) {  
-            for (int j = 0; j <= mochila.getNumObjetos(); j++) {  
+        for (int i = 0; i <= mochila.getCapacidad()*100; i++) {  
+            for (int j = 0; j <= objetos.length; j++) {  
               
                 if (j == 0 || i == 0) {  
                     matrizOptima[j][i] = 0;  
                 }     
                 else   
                 {  
-                	// Si el peso de la mochila con el elemento j es mayor que la capacidad,   
-                	// la solucion optima existe en las primeras mochilas j-1  
-                    if (i < objetos[j-1].getPeso()) {  
+                	// Si se supera la capacidad con el elemento que queremos introducir,   
+                	// el valor optimo en ese caso es no meterlo, por lo que cogemos el anterior
+                    if (i < objetos[j-1].getPeso()*100) {  
                         matrizOptima[j][i] = matrizOptima[j-1][i];  
                     }     
                     else   
                     {  
-                       
-                        int jpeso = objetos[j-1].getPeso();  
+                    	int jpeso = (int) objetos[j-1].getPeso()*100;  
                         int jvalor = objetos[j-1].getValor();
                         
                         // Si no se supera la capacidad, comparamos el valor de 
@@ -76,10 +77,10 @@ public class ProblemaMochila {
         }  
         
         //Inicializamos el peso restante como la capacidad de la mochila
-        int pesoAct = mochila.getCapacidad();  
+        int pesoAct = mochila.getCapacidad()*100;  
         
         //Recorremos valores en la matriz desde la ultima fila
-        for (int i=mochila.getNumObjetos(); i >= 1; i--) {  
+        for (int i=objetos.length; i >= 1; i--) {  
         	
         	//Si el valor de una posicion en la matriz es mayor que el 
         	//que tiene encima anadimos a la solucion el objeto que
@@ -88,18 +89,18 @@ public class ProblemaMochila {
         	   mochila.addSeleccionado(objetos[i-1]);
         	   
         	   //Le quitamos el peso del objeto que acabamos de anadir
-               pesoAct -= objetos[i-1].getPeso();  
+               pesoAct -= objetos[i-1].getPeso()*100;  
            }  
            
            //Cuando el peso restante sea 0 salimos del bucle
            if (pesoAct == 0)  
         	   break;  
         }  
-        valorOptimo = matrizOptima[mochila.getNumObjetos()][mochila.getCapacidad()];  
+        valorOptimo = matrizOptima[objetos.length][mochila.getCapacidad()*100];  
         solucionOptima = mochila.getSeleccionados();
     } 
 	
-	public int getValorOptimo() {
+	public double getValorOptimo() {
 		return valorOptimo;
 	}
 	
