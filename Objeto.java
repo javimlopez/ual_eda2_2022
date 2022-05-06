@@ -1,19 +1,18 @@
 package practica3;
 
-public class Objeto {
+public class Objeto{
 	
 	//Cada objeto tiene un peso y un valor enteros
 	private String nombre;
-	private int peso;
+	private double peso;
+
 	private int valor;
-	private int seleccionado;
 	
 	//Constructor por el que se le pasa el peso y el valor
-	public Objeto(int peso, int valor) {
+	public Objeto(double peso, int valor) {
 		this.nombre = "";
 		this.peso = peso;
 		this.valor = valor;
-		this.seleccionado = 0;
 	}
 	
 	//Getters
@@ -21,16 +20,13 @@ public class Objeto {
 		return nombre;
 	}
 	
-	public int getPeso() {
+	public double getPeso() {
 		return peso;
 	}
+
 	
 	public int getValor() {
 		return valor;
-	}
-	
-	public int getSeleccionado() {
-		return seleccionado;
 	}
 	
 	//Setters
@@ -38,20 +34,13 @@ public class Objeto {
 		this.nombre = "objeto" + i.toString();
 	}
 	
-	public void setPeso(int pesoMochila) {
-		this.peso = (int) Math.random()*pesoMochila;
+	public void setValor(Integer i) {
+		this.valor = i;
 	}
-	
-	public void setValor() {
-		this.valor = (int) Math.random()*100;
-	}
-	
-	public void setSeleccionado(Integer i) {
-		this.seleccionado = i;
-	}
-	
+
 	//toString
 	public String toString() {  
-		   return nombre + ": [Peso: " + peso + ", valor: " + valor + "]\t" + seleccionado;    
+		   return nombre + ": [Peso: " + peso + ", valor: " + valor + "]   ";    
 		}
+
 }
