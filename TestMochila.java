@@ -3,48 +3,54 @@ package practica3;
 public class TestMochila {
 	
 	public static void main(String[] args) {  
-        
-		int capacidad = 50;
-		int nObjetos = 20;
-        Objeto[] objetos = new GeneradorObjetos(nObjetos,capacidad).getObjetos();
-        
-        for(Integer i = 0; i < objetos.length; i++) {
-        	objetos[i].setNombre(i);
-        }
-        
-        Mochila mochila = new Mochila(objetos,capacidad);
-        ProblemaMochila problema = new ProblemaMochila();   
-        problema.resolverProblema(mochila, objetos);  
-                       
-                 System.out.println ("\nMatriz de valores óptimos:");  
-        int[][] bestValues = problema.getMatrizOptima();  
-        for (int i=0; i < bestValues.length; i++) {  
-            for (int j=0; j < bestValues[i].length; j++) {
-            	
-            	if(i == 0)
-            		System.out.print("Peso:" + j + "\t");
-            	
-            	else if (j==0) 
-            		System.out.print(objetos[i-1].getNombre() + "\t");
-            	
-            	else	
-                System.out.print("  " + bestValues[i][j] + "\t");  
-            }  
-            System.out.println();  
-        }
-	        System.out.println ("\nLista de objetos tras ejecutar el alogritmo:");
-	        for (Objeto objeto : mochila.getObjetos()) {
-	        	System.out.println(objeto.toString());  
-	        }
-	        
-	        System.out.println("\nLista de objetos seleccionados: ");
-	        for (Objeto objeto : mochila.getSeleccionados()) {
-	        	System.out.println(objeto.toString());  
-	        }
-	        
-	        System.out.println("");
-	        
-	        System.out.println ("Valor óptimo:" + problema.getValorOptimo());
-  
-    }  
+		
+//		GeneradorObjetos objetosCreadosEnteros = new GeneradorObjetos();
+//		objetosCreadosEnteros.creaObjetosInt();
+		GeneradorObjetos objetosCreadosReales = new GeneradorObjetos();
+		objetosCreadosReales.creaObjetosReales();
+		
+//		Objeto[] objetosInt = new Objeto[objetosCreadosEnteros.getObjetos().size()];
+//		for(int i = 0; i < objetosInt.length; i++) {
+//			objetosInt[i] = objetosCreadosEnteros.getObjetos().get(i);
+//		}
+		
+		Objeto[] objetosReales = new Objeto[objetosCreadosReales.getObjetos().size()];
+		for(int i = 0; i < objetosReales.length; i++) {
+			objetosReales[i] = objetosCreadosReales.getObjetos().get(i);
+		}
+		
+		Mochila mochila = new Mochila(objetosCreadosReales.getCapacidad());	
+		ProblemaMochila problema = new ProblemaMochila();   
+		problema.resolverProblema(mochila,objetosReales); 
+		
+		System.out.println ("\nMatriz de valores Ã³ptimos:");  
+		int[][] matrizOptima = problema.getMatrizOptima();  
+		for (int i = 0; i < matrizOptima.length; i++) {  
+			for (int j = 0; j < matrizOptima[i].length; j++) {
+				
+				if(i == 0) {
+					if(j == 0)
+						System.out.print("\t\t");
+					else 	
+						System.out.print(" P:" + (double)j/100 + "\t");
+				}
+				else if (j==0) 
+					System.out.print(objetosReales[i-1].getNombre() + "  \t");
+	            	
+				else	
+					System.out.print("  " + matrizOptima[i][j] + "\t");  
+			}  
+			System.out.println();  
+		}
+		        
+		System.out.println("\nLista de objetos seleccionados: ");
+		for (Objeto objeto : mochila.getSeleccionados()) {
+			System.out.println(objeto.toString());  
+		}
+		        
+		System.out.println("");
+		
+		System.out.println ("Valor Ã³ptimo:" + problema.getValorOptimo());
+	}
 }
+          
