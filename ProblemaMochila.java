@@ -96,7 +96,7 @@ public class ProblemaMochila {
            if (pesoAct == 0)  
         	   break;  
         }  
-        valorOptimo = matrizOptima[objetos.length][mochila.getCapacidad()];  
+        valorOptimo = matrizOptima[objetos.length][mochila.getCapacidad()*100];  
         solucionOptima = mochila.getSeleccionados();
     } 
 	
