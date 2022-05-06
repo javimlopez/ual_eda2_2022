@@ -32,7 +32,6 @@ public class Mochila {
 	}
 
 	public void addSeleccionado(Objeto objeto) {
-		objeto.setSeleccionado(1);
 		this.seleccionados.add(objeto);
 	}
 }
