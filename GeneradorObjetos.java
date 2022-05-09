@@ -23,8 +23,8 @@ public class GeneradorObjetos {
 		sc1.close();
 		sc2.close();
 		for (int i = 0; i < numObjetos; i++) {
-			Objeto aux = new Objeto((int)Math.ceil(Math.random()*(capacidad-0.1)),0);
-			aux.setValor((int) Math.ceil( Math.random()*(aux.getPeso()*50 + Math.random()*50)));
+			Objeto aux = new Objeto((int)Math.ceil(Math.random()*(capacidad)),0);
+			aux.setValor((int) Math.ceil( Math.random()*(aux.getPeso()*70 + Math.random()*30)));
 			aux.setNombre(i);
 			objetos.add(aux);
 		}
