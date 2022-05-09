@@ -20,7 +20,7 @@ public class ProblemaMochila {
 		// Inicializamos la matriz optima
 
 		if (matrizOptima == null)
-			matrizOptima = new int[objetos.length + 1][mochila.getCapacidad()*1000 + 1];
+			matrizOptima = new int[objetos.length + 1][mochila.getCapacidad()*10000 + 1];
 
 		// Comenzamos dando formato a la salida final mostrando
 		// la lista de objetos para llenar la mochila
@@ -37,7 +37,7 @@ public class ProblemaMochila {
 		System.out.println("Capacidad de la mochila (peso maximo): " + mochila.getCapacidad());
 
 		// encuentra el valor optimo
-		for (int i = 0; i <= mochila.getCapacidad()*1000; i++) {
+		for (int i = 0; i <= mochila.getCapacidad()*10000; i++) {
 			for (int j = 0; j <= objetos.length; j++) {
 
 				if (j == 0 || i == 0) {
@@ -45,10 +45,10 @@ public class ProblemaMochila {
 				} else {
 					// Si se supera la capacidad con el elemento que queremos introducir,
 					// el valor optimo en ese caso es no meterlo, por lo que cogemos el anterior
-					if (i < objetos[j - 1].getPeso()*1000) {
+					if (i < objetos[j - 1].getPeso()*10000) {
 						matrizOptima[j][i] = matrizOptima[j - 1][i];
 					} else {
-						int jpeso = (int) Math.ceil(objetos[j - 1].getPeso()*1000);
+						int jpeso = (int) Math.ceil(objetos[j - 1].getPeso()*10000);
 						int jvalor = objetos[j - 1].getValor();
 
 						// Si el valor de no introducirlo es mayor o igual al de introducirlo
@@ -71,7 +71,7 @@ public class ProblemaMochila {
 		}
 
 		// Inicializamos el peso restante como la capacidad de la mochila
-		int pesoAct = mochila.getCapacidad()*1000;
+		int pesoAct = mochila.getCapacidad()*10000;
 
 		// Recorremos valores en la matriz desde la ultima fila
 		for (int i = objetos.length; i >= 1; i--) {
@@ -83,14 +83,14 @@ public class ProblemaMochila {
 				mochila.addSeleccionado(objetos[i - 1]);
 
 				// Le quitamos el peso del objeto que acabamos de anadir
-				pesoAct -= objetos[i - 1].getPeso()*1000;
+				pesoAct -= objetos[i - 1].getPeso()*10000;
 			}
 
 			// Cuando el peso restante sea 0 salimos del bucle
 			if (pesoAct == 0)
 				break;
 		}
-		valorOptimo = matrizOptima[objetos.length][mochila.getCapacidad()*1000];
+		valorOptimo = matrizOptima[objetos.length][mochila.getCapacidad()*10000];
 		solucionOptima = mochila.getSeleccionados();
 	}
 

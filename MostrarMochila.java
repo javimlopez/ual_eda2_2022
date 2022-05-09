@@ -23,24 +23,24 @@ public class MostrarMochila {
 		ProblemaMochila problema = new ProblemaMochila();
 		problema.resolverProblema(mochila, objetosReales);
 
-		System.out.println("\nMatriz de valores óptimos:");
-		int[][] matrizOptima = problema.getMatrizOptima();
-		for (int i = 0; i < matrizOptima.length; i++) {
-			for (int j = 0; j < matrizOptima[i].length; j++) {
-
-				if (i == 0) {
-					if (j == 0)
-						System.out.print("\t\t");
-					else
-						System.out.print("P" + (double)j/1000+ "\t");
-				} else if (j == 0)
-					System.out.print(objetosReales[i - 1].getNombre() + "  \t");
-
-				else
-					System.out.print("  " + matrizOptima[i][j] + "\t");
-			}
-			System.out.println();
-		}
+//		System.out.println("\nMatriz de valores óptimos:");
+//		int[][] matrizOptima = problema.getMatrizOptima();
+//		for (int i = 0; i < matrizOptima.length; i++) {
+//			for (int j = 0; j < matrizOptima[i].length; j++) {
+//
+//				if (i == 0) {
+//					if (j == 0)
+//						System.out.print("\t\t");
+//					else
+//						System.out.print("P" + (double)j/1000+ "\t");
+//				} else if (j == 0)
+//					System.out.print(objetosReales[i - 1].getNombre() + "  \t");
+//
+//				else
+//					System.out.print("  " + matrizOptima[i][j] + "\t");
+//			}
+//			System.out.println();
+//		}
 
 		System.out.println("\nLista de objetos seleccionados: ");
 		for (Objeto objeto : mochila.getSeleccionados()) {
